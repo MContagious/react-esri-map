@@ -7,4 +7,7 @@ clean:
 example:
 	webpack-dev-server --config ./webpack.dev.config.js
 
-.PHONY: clean example
+develop:
+	webpack-dev-server --config ./webpack.dev.config.js
+
+.PHONY: clean example develop
