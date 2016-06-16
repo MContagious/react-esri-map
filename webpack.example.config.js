@@ -5,10 +5,7 @@ module.exports = {
     colors: true,
     context: __dirname,
     devtool: "#source-map",
-    entry: [
-        "babel-polyfill",
-        "./src/index.jsx"
-    ],
+    entry: path.join(__dirname, "example/main.jsx"),
     devServer: {
         colors: true,
         inline: true,
@@ -16,20 +13,20 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.jsx?$/, loaders: [ 'react-hot', 'babel', 'react-map-styles' ], include: path.join(__dirname, 'src') },
+            { test: /\.jsx?$/, loaders: ['react-hot', 'babel-loader'], exclude: /node_modules/ },
             { test: /\.less$/, loader: 'style!css!less' },
             { test: /\.scss$/, loaders: ['style', 'css', 'sass']},
             { test: /\.css$/, loader: 'style!css'},
-            { test: /\.json?$/, loader: 'json-loader' },
-            { test: /\.gif$/, loader: "url-loader?mimetype=image/png" },
-            { test: /\.woff(2)?(\?v=[0-9].[0-9].[0-9])?$/, loader: "url-loader?mimetype=application/font-woff" },
-            { test: /\.(ttf|eot|svg)(\?v=[0-9].[0-9].[0-9])?$/, loader: "file-loader?name=[name].[ext]" }
+            { test: /\.json?$/, loader: 'json-loader' }
         ]
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.NoErrorsPlugin()
     ],
+    resolve: {
+        extensions: ["", ".js", ".jsx"]
+    },
     output: {
         path: __dirname,
         filename: "bundle.js",
