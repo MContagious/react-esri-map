@@ -1,7 +1,9 @@
 import Map from './map';
+import BaseMapLayer from './basemaplayer';
 
 export {
-  Map
+    BaseMapLayer,
+    Map
 };
 
 export default Map;
