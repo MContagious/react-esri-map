@@ -54,6 +54,7 @@
     "react-dom": "^15.1.0"
   },
   "dependencies": {
+    "chance": "^1.0.3",
     "esri-leaflet": "^2.0.0",
     "react-leaflet": "^0.11.7"
   }

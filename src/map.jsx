@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import Leaflet from './leaflet/leaflet.js';
 import EsriLeaflet from 'esri-leaflet';
+import Chance from 'chance';
+
+const chance = new Chance();
 
 import './leaflet/leaflet.css';
 import './map.css';
@@ -8,11 +11,12 @@ import './map.css';
 export default class Map extends Component {
 
     state = {
-        map: null
+        map: null,
+        mapId: chance.hash({length: 15})
     }
 
     componentDidMount() {
-        const map = L.map('map').setView([this.props.lat, this.props.lng], this.props.zoom);
+        const map = L.map(this.state.mapId).setView([this.props.lat, this.props.lng], this.props.zoom);
         this.setState({ map: map });
     }
 
@@ -23,11 +27,10 @@ export default class Map extends Component {
     }
 
     render() {
-        const { map } = this.state;
+        const { map, mapId } = this.state;
         // @todo don't use id for map, this will break with multiples
-        console.log('map is', map);
         return (
-            <div id="map" className="react-esri-map">
+            <div id={mapId} className="react-esri-map">
                 { map && this.props.children }
             </div>
         );
