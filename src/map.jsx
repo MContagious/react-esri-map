@@ -5,22 +5,28 @@ import EsriLeaflet from 'esri-leaflet';
 import './leaflet/leaflet.css';
 import './map.css';
 
-console.log('MAP LOADED YO');
-
 export default class Map extends Component {
-    static propTypes = {
-        zoom: PropTypes.number
-    };
-
     componentDidMount() {
-        var map = L.map('map').setView([38.9043478, -77.0429411], 13);
-        EsriLeaflet.basemapLayer('Streets').addTo(map);
+        var map = L.map('map').setView([this.props.lat, this.props.lng], this.props.zoom);
     }
 
     render() {
         // @todo don't use id for map, this will break with multiples
+        console.log("rendering map");
         return (
             <div id="map" className="react-esri-map"></div>
         );
     }
 }
+
+Map.propTypes = {
+    lat: PropTypes.number,
+    lng: PropTypes.number,
+    zoom: PropTypes.number
+};
+
+Map.defaultProps = {
+    lat: 38.9043478,
+    lng: -77.0429411,
+    zoom: 13
+};
