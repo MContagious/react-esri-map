@@ -28,7 +28,6 @@ export default class Map extends Component {
 
     render() {
         const { map, mapId } = this.state;
-        // @todo don't use id for map, this will break with multiples
         return (
             <div id={mapId} className="react-esri-map">
                 { map && this.props.children }

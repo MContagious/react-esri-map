@@ -12,7 +12,7 @@ export default class BaseMapLayer extends Component {
     render() {
         return null;
     }
-}
+};
 
 BaseMapLayer.contextTypes = {
     map: PropTypes.object
