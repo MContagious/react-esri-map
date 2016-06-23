@@ -17,6 +17,7 @@ export default class Map extends Component {
 
     componentDidMount() {
         const map = L.map(this.state.mapId).setView([this.props.lat, this.props.lng], this.props.zoom);
+        L.Icon.Default.imagePath = this.props.imagePath;
         this.setState({ map: map });
     }
 
@@ -37,12 +38,14 @@ export default class Map extends Component {
 }
 
 Map.propTypes = {
+    imagePath: PropTypes.string,
     lat: PropTypes.number,
     lng: PropTypes.number,
     zoom: PropTypes.number
 };
 
 Map.defaultProps = {
+    imagePath: 'https://cdn.socialradar.com/icons/leaflet',
     lat: 38.9043478,
     lng: -77.0429411,
     zoom: 13
