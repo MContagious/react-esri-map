@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Leaflet from './leaflet/leaflet.js';
 import EsriLeaflet from 'esri-leaflet';
-import warning from 'warning';
 
 export default class TiledMapLayer extends Component {
     componentDidMount() {
