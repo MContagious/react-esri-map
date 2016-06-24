@@ -2,8 +2,9 @@
   "name": "react-esri-map",
   "version": "0.1.0",
   "description": "React component for loading an ESRI map",
-  "main": "dist/index.js",
+  "main": "dist/bundle.js",
   "scripts": {
+    "prepublish": "make build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

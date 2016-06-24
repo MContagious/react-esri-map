@@ -1,5 +1,5 @@
 build:
-	babel src --out-dir dist
+	webpack --progress --colors
 
 clean:
 	rm -rf dist
