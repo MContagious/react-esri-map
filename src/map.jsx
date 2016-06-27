@@ -18,6 +18,24 @@ export default class Map extends Component {
     componentDidMount() {
         const map = L.map(this.state.mapId).setView([this.props.lat, this.props.lng], this.props.zoom);
         L.Icon.Default.imagePath = this.props.imagePath;
+
+        // Add event handlers
+        if (this.props.onDragStart) {
+            map.on('dragstart', this.props.onDragStart);
+        }
+
+        if (this.props.onPreDrag) {
+            map.on('predrag', this.props.onPreDrag);
+        }
+
+        if (this.props.onDrag) {
+            map.on('drag', this.props.onDrag);
+        }
+
+        if (this.props.onDragEnd) {
+            map.on('dragend', this.props.onDragEnd);
+        }
+
         this.setState({ map: map });
     }
 
@@ -41,6 +59,10 @@ Map.propTypes = {
     imagePath: PropTypes.string,
     lat: PropTypes.number,
     lng: PropTypes.number,
+    onDrag: PropTypes.func,
+    onDragEnd: PropTypes.func,
+    onDragStart: PropTypes.func,
+    onPreDrag: PropTypes.func,
     zoom: PropTypes.number
 };
 
