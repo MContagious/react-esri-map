@@ -1,5 +1,7 @@
 build:
-	webpack --progress --colors
+	babel src --out-dir dist
+	cp -r src/leaflet/* dist/leaflet
+	cp src/map.css dist/map.css
 
 clean:
 	rm -rf dist

@@ -4,10 +4,7 @@ const webpack = require("webpack");
 module.exports = {
     colors: true,
     devtool: "#source-map",
-    entry: [
-        "babel-polyfill",
-        "./src/index.jsx"
-    ],
+    entry: [ "./src/index.jsx" ],
     output: {
         path: path.join( __dirname, "dist"),
         filename: "bundle.js",
